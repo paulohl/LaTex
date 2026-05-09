@@ -1,0 +1,336 @@
+\UseRawInputEncoding
+\documentclass[12pt,oneside]{academia}
+\usepackage{hyperref}
+%--------------------------------------------------------------
+\usepackage{titlesec}
+\usepackage{latexsym}
+\usepackage{amsmath}
+\usepackage{bm}
+\usepackage{times}
+\usepackage{calc}
+\usepackage{array}
+\usepackage{booktabs}
+\usepackage{caption}
+\usepackage{longtable}
+\usepackage{tabularx}
+\usepackage{fancyvrb}
+\usepackage{epstopdf}
+\usepackage{ifthen}
+\usepackage{paralist}
+\usepackage{indentfirst} 
+\usepackage{authblk}
+\usepackage{fancyhdr}
+\usepackage{amsthm}
+\usepackage[normalem]{ulem}
+%-------------------------------------------------------------
+\usepackage{amsfonts}
+\usepackage{multicol}
+\usepackage{makeidx}
+\usepackage{subcaption}
+\usepackage[numbers, sort&compress]{natbib}
+\usepackage{setspace}
+%--------------------------------------------------------------------
+\usepackage{titletoc}
+\usepackage{float}
+\usepackage{dsfont}
+\usepackage{lipsum}
+\usepackage{imakeidx}
+\usepackage{multirow}
+\usepackage[hang]{footmisc} 
+%%%%%%%%%%%%%% force formula number size unchanged %%%%%%%%%%%%%%%
+\usepackage{amssymb}
+\usepackage{color}
+\usepackage{listings}
+%%%%%%%%%%%%% set table background color %%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{colortbl}
+\definecolor{mygray}{gray}{.9}
+\definecolor{mypink}{rgb}{.99,.91,.95}
+\definecolor{mycyan}{cmyk}{.3,0,0,0}
+%---------------------------------------------------------------------
+\usepackage{mathrsfs} %special symbol pack
+\usepackage{orcidlink}
+\usepackage{graphicx} 
+\usepackage[acronym]{glossaries}
+%--------------------------------------------------------------------
+\makeatletter
+\def\my@tag@font{\normalsize}
+\def\maketag@@@#1{\hbox{\m@th\normalfont\my@tag@font#1}}
+\let\amsmath@eqref\eqref
+\renewcommand\eqref[1]{{\let\my@tag@font\relax\amsmath@eqref{#1}}}
+\makeatother
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage[labelsep=period,
+    labelfont=bf,
+    aboveskip=10pt,
+    belowskip=2pt,
+    font=small,
+    font=it]
+    {caption}
+\usepackage[english]{babel}
+\uchyph=0
+\tolerance=1
+\emergencystretch=\maxdimen
+\hyphenpenalty=10000
+\hbadness=10000
+%--------------------------------------------------------------------
+\usepackage{xcolor}
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2
+}
+\lstset{style=mystyle}
+%--------------------------------------------------------------------
+\topmargin=-0.5truein \oddsidemargin=0.25truein
+\evensidemargin=0.25truein \textwidth=6truein \textheight=9truein
+\geometry{verbose,
+    tmargin=2.3cm,
+    bmargin=3.4cm,
+    lmargin=1.5cm,
+    rmargin=2.0cm,
+    headheight=1.25cm,
+    footskip=1.25cm
+}
+\geometry{right=1.5cm}
+%--------------------------------------------------------------------
+%%%%%%%%%%% Indent the first line of a paragraph %%%%%%%%%%%%%%%%%%
+\parindent=10pt
+\linespread{1.0}
+\setlength{\parskip}{0pt}
+%-----------------------------------------------------------
+
+% --- SECTION NUMBERING & STYLING ---
+\setcounter{secnumdepth}{4}
+\renewcommand{\thesection}{\arabic{section}} 
+\renewcommand{\thesubsection}{\thesection.\arabic{subsection}}
+\renewcommand{\thesubsubsection}{\thesection.\arabic{subsection}.\arabic{subsubsection}}
+
+% --- FIXED SPACING TUNING ---
+% Standardized vertical rhythm across all structural headers.
+% Syntax: \titlespacing*{<command>}{<left>}{<before-sep>}{<after-sep>}
+\titleformat{\section}{\bfseries\fontsize{14pt}{16pt}\selectfont}{\thesection.}{0.5em}{}
+\titlespacing*{\section}{0pt}{18pt plus 4pt minus 2pt}{8pt plus 2pt}
+
+\titleformat{\subsection}{\bfseries\slshape\fontsize{12pt}{14pt}\selectfont}{\thesubsection.}{0.5em}{}
+\titlespacing*{\subsection}{0pt}{14pt plus 3pt minus 2pt}{6pt plus 1pt}
+
+\titleformat{\subsubsection}{\bfseries\slshape\fontsize{10pt}{12pt}\selectfont}{\thesubsubsection.}{0.5em}{}
+\titlespacing*{\subsubsection}{0pt}{12pt plus 3pt minus 2pt}{4pt plus 1pt}
+
+\titlelabel{\thetitle.~~}
+
+% -------------------------------------------------------------
+\fancyhead{}%
+\fancyfoot{}%
+\pagestyle{fancy}
+\fancyhead[L]{\ifthenelse{\value{page}=1}{first page}{second page}}
+\pagestyle{fancy}
+\addtolength{\headheight}{\baselineskip}
+\fancyhf{}
+\fancyhead[OR, L]{\fontsize{9pt}{12pt}\small\thepage\\\vspace{1pt}}
+\fancyhead[C]{\fontsize{9pt}{12pt}{\small{Author's Name:~~Paper Title}}\\} 
+%%%%% Single page header %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\fancyhead[OC]{\fontsize{9pt}{12pt}{\small{RUNNING HEAD: A TRANSFORMER-BASED FRAMEWORK}}\\} 
+%%%%%% Double page header %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\fancypagestyle{plain}{\renewcommand{\headrulewidth}{0pt}\fancyhf{}}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+\voffset=1.5cm
+\headsep=1.5cm
+\footskip=1cm
+
+\setlength{\columnsep}{1.5em} 
+\let\enditemize\endcompactitem
+\let\enumerate\compactenum
+\let\endenumerate\endcompactenum
+\let\description\compactdesc
+\let\enddescription\endcompactdesc
+
+%--------------------------------------------------------------------
+\makeatletter
+\renewcommand{\footnoterule}{%
+    \vspace*{1pt}%
+    \hrule\@width 0.4\columnwidth\@height 0.4pt%
+    \vspace*{3pt}%
+}
+\setlength{\footnotemargin}{0.5em}
+\def\thm@space@setup{\thm@preskip=0pt\thm@postskip=0pt}
+\makeatother
+
+\newtheoremstyle{remark}{}{}{\mdseries}{}{\bfseries}{.}{ }{}
+\theoremstyle{remark}
+\newtheorem{theorem}{\it\indent Theorem}[section]
+\newtheorem{lemma}{\it\indent Lemma}[section]
+\newtheorem{proposition}{\it\indent Proposition}[section]
+\newtheorem{remark}{\it\indent Remark}[section]
+\newtheorem{example}{\it\indent Example}[section]
+\newtheorem{definition}{\it\indent Definition}[section]
+
+%---------------------------------------------------------------------
+\makeatletter
+\newenvironment{pf}[1][\proofname]{\par\pushQED{\qed}\normalfont\topsep0\p@\relax
+\trivlist\item[\hskip\labelsep\itshape #1\@addpunct{.}]\ignorespaces}{\popQED\endtrivlist\@endpefalse}
+\makeatother
+%--------------------------------------------------------------------
+\makeglossaries
+\newacronym{ai}{AI}{Artificial Intelligence}
+\newacronym{apt}{APT}{Advanced Persistent Threat}
+\newacronym{bert}{BERT}{Bidirectional Encoder Representations from Transformers}
+\newacronym{cert}{CERT/CC}{Computer Emergency Response Team Coordination Center}
+\newacronym{cve}{CVE}{Common Vulnerabilities and Exposures}
+\newacronym{cti}{CTI}{Cyber Threat Intelligence}
+\newacronym{darpa}{DARPA}{Defense Advanced Research Projects Agency}
+\newacronym{edr}{EDR}{Endpoint Detection and Response}
+\newacronym{gan}{GAN}{generative adversarial network} 
+\newacronym{gnn}{GNN}{Graph Neural Networks}
+\newacronym{gcd}{GCD}{Greatest Common Divisor}
+\newacronym{gpt}{GPT}{Generative pre-Trained Transformer}
+\newacronym{hfd}{HFD}{Hugging Face Diffusers}
+\newacronym{ids}{IDS}{Intrusion Detection System}
+\newacronym{ioc}{IOC}{Indicator of Compromise}
+\newacronym{ir}{IR}{incident response}
+\newacronym{ivam}{IVAM}{Investigation, Validation, Active Monitoring}
+\newacronym{kpi}{KPI}{Key Performance Indicator}
+\newacronym{lcm}{LCM}{Least Common Multiple}
+\newacronym{ics}{ICS}{Industrial Control System}
+\newacronym{lime}{LIME}{Local Interpretable Model-agnostic Explanation}
+\newacronym{llm}{LLM}{Large Language Model}
+\newacronym{lstm}{LSTM}{Long Short-Term Memory}
+\newacronym{mttd}{MTTD}{Mean Time to Detect}
+\newacronym{mttr}{MTTR}{Mean Time to Repair/Respond/Remediate}
+\newacronym{ner}{NER}{Named Entity Recognition}
+\newacronym{nlp}{NLP}{Natural Language Processing}
+\newacronym{onnx}{ONNX}{Open Neural Network Exchange} 
+\newacronym{ot}{OT}{Operational Technology}
+\newacronym{shap}{SHAP}{Shapley Additive exPlanation}
+\newacronym{siem}{SIEM}{Security Information and Event Management}
+\newacronym{soar}{SOAR}{Security Orchestration, Automation, and Response}
+\newacronym{soc}{SOC}{Security Operations Center}
+\newacronym{ttp}{TTP}{tactics, methods and procedure}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% BEGIN DOCUMENT %%%%%%%%%%%%%%
+\begin{document}
+\renewcommand{\qedsymbol}{}
+\DeclareFixedFont{\Head}{OT1}{phv}{bx}{n}{18pt}
+\DeclareFixedFont{\Name}{OT1}{ptm}{bx}{n}{12pt}%
+\DeclareFixedFont{\Address}{OT1}{ptm}{m}{n}{9pt}
+\DeclareFixedFont{\Emailaddress}{OT1}{ptm}{bx}{n}{12pt}
+\DeclareFixedFont{\Emailaddresscontent}{OT1}{ptm}{m}{n}{9pt}%
+\DeclareFixedFont{\Citation}{OT1}{ptm}{bx}{n}{12pt}
+\DeclareFixedFont{\Citationcontent}{OT1}{ptm}{m}{n}{9pt}
+\DeclareFixedFont{\Date}{OT1}{ptm}{m}{n}{9pt}
+\DeclareFixedFont{\Abstract}{OT1}{ptm}{bx}{n}{12pt}
+\DeclareFixedFont{\Abstractcontent}{OT1}{ptm}{m}{n}{10pt}
+\DeclareFixedFont{\FirstLevel}{OT1}{ptm}{bx}{n}{14pt}
+\DeclareFixedFont{\SecondLevel}{OT1}{ptm}{bx}{n}{12pt}
+\DeclareFixedFont{\ThirdLevel}{OT1}{ptm}{bx}{it}{10pt}%
+\DeclareFixedFont{\Text}{OT1}{ptm}{m}{n}{10pt}
+\DeclareFixedFont{\References}{OT1}{ptm}{bx}{n}{14pt}%
+\DeclareFixedFont{\JL}{T1}{pxtt}{bx}{n}{12pt}
+%----------------------------------------------------------------- 
+\articletype{Research article}
+\proofstage{}
+\jName{}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\title{A Transformer-Based Framework for Automated Incident Response in Cybersecurity}
+\author{$^{1*}$Paulo Leocadio}
+\maketitle
+\affiliation{$^{1}$Zinnia Labs, Coral Springs, USA.}
+\noindent $^{*}$Correspondence: Paulo Leocadio
+\email{$^{*}$ph@zinnia.holdings}
+\noindent {ORCID:} \orcidlink{0000-0002-4992-4541}\ 
+\noindent {0000-0002-4992-4541 (Paulo Leocadio)}\\
+\section*{Abstract}
+\noindent \textit{Incident response (\acrshort{ir}) faces increasing pressure to manage a high volume of threats with limited human resources. This paper proposes a transformer-based framework for automating key phases of the (\acrshort{ir}) lifecycle by integrating \acrlong{nlp} (\acrshort{nlp}) models into operational cybersecurity workflows. Rather than applying isolated AI techniques, the proposed approach formalizes how pre-trained transformer models can be systematically incorporated into \acrlong{soc} (\acrshort{soc}) processes for incident classification, threat intelligence extraction, and response orchestration.}
+
+\textit{The framework leverages transformer architectures fine-tuned on security-relevant data and integrates them into end-to-end (\acrshort{ir}) pipelines. We evaluate this approach through a case study on phishing incident management, demonstrating measurable improvements in detection accuracy and response time compared to traditional manual workflows. Results indicate that transformer-based systems can reduce analyst cognitive load while enhancing both the speed and consistency of threat mitigation.}
+
+\textit{In addition to empirical evaluation, we examine system-level considerations, including model explainability, false positives, and ethical implications such as bias and data privacy. The findings suggest that transformer-based (\acrshort{nlp}) models can function as operational components within adaptive cybersecurity systems, enabling scalable and intelligent automation. We conclude by outlining future directions for extending this framework with multimodal models and advanced \acrshort{ai} integration, emphasizing the importance of maintaining human oversight in \acrshort{ai}-driven security environments.}
+\keywords{Incident Response; Cybersecurity; Automation; Transformers; NLP; Threat Intelligence.}\\
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\noindent 
+\parskip=8pt \\
+\noindent {To cite this article: {Paulo Leocadio (2026). A Transformer-Based Framework for Automated Incident Response in Cybersecurity. }}
+\parskip=5pt
+\noindent \rule{\textwidth}{1pt}
+\let\thefootnote\relax
+\footnotetext{A preprint version of this work has been previously disseminated for early feedback} 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\columnseprule=0pt
+\setlength{\columnsep}{1.5em}
+\vspace{-12pt}
+\begin{multicols}{2}
+\section{Introduction}\label{sec1}
+The convergence of Artificial Intelligence (AI) and implantable medical devices represents a significant advancement in healthcare technology. This paper provides an overview of the integration of AI in implantable devices, emphasizing its role in enhancing bio-tech innovations. The specific objectives are to analyze key achievements, compare features, and discuss challenges and opportunities.  Examples from manufacturers provide a global perspective such as BIOTRONIK, Medtronic, Qinming, Boston Scientific, and Aveir, to illustrate the worldwide impact of AI in this field.
+
+\subsection{Hugging Face Diffusers Overview and Justification}
+Hugging Face Diffusers is a part of the Hugging Face ecosystem, which has become a central hub for sharing and deploying advanced machine learning models. Hugging Face's mission is to democratize \acrshort{ai}, making cutting-edge models accessible through user-friendly libraries and an open Model Hub~\cite{Sanh2019}. The platform hosts a wide range of transformer models for natural language processing (\acrshort{nlp}), vision, speech, and more, contributed by researchers and organizations worldwide. As of 2025, the Hugging Face Hub contains over 350,000 models and 150,000 community-provided demos that cover a range of tasks, from text classification to image generation~\cite{Sanh2019}. This extensive repository benefits from libraries such as Transformers (which provides general-purpose Transformer models), Datasets (which handles data loading and preproce
+
+\subsection{Machine Learning \& AI in Healthcare} 
+The integration of Artificial Intelligence (AI) and Machine Learning (ML) into healthcare has ushered in a new era of innovation, transforming traditional medical practices, and contributing to the advancement of bio-tech solutions. This section provides an overview of the general trends and significant advancements in the field of Machine Learning and AI within the healthcare sector, establishing the broader context for the subsequent analysis of AI integration in implantable medical devices.
+
+\subsection{General Trends in AI and Healthcare}
+AI technologies have witnessed an unprecedented surge in healthcare applications, driven by the increasing availability of healthcare data, computational power, and advancements in algorithms. Discuss the evolving landscape of AI in child computer interaction, emphasizing the ethical considerations associated with wearable biotechnologies.
+
+In the context of healthcare, it provides valuable insights into the general trends of Machine Learning and AI for the year 2023. The article highlights the growing role of AI in healthcare analytics, personalized medicine, and predictive diagnostics. Trends such as natural language processing for clinical documentation, image recognition for diagnostics, and predictive modeling for patient outcomes underscore the multifaceted impact of AI in healthcare.
+
+\subsubsection{Significance of AI in Healthcare Technology}
+The AI ability to enhance diagnostic accuracy, streamline decision-making processes, and improve patient outcomes significance underscore the significance of AI in healthcare technology. Delve into the life sciences industry, shedding light on the integration of AI in laboratories and the commercialization of research. The authors emphasize the pivotal role AI plays in accelerating research processes, drug discovery, and the development of innovative medical solutions.
+
+AI technologies not only augment the capabilities of healthcare professionals but also enable the development of patient-centric and adaptive healthcare systems. Discuss the computational health informatics landscape, emphasizing the role of AI in biomedical applications. The authors highlight the transformative impact of AI on healthcare data analytics, disease prediction, and personalized health management.
+
+In summary, the general trends and significance of AI in healthcare set the stage for a deeper exploration of its integration into implantable medical devices. As the field continues to evolve, understanding these trends becomes crucial for appreciating the broader impact of AI on the future of biotech innovations.
+
+\subsection{Landscape of AI-Integrated Implantable Medical Devices}
+
+\subsubsection{Introduction to AI in Implantable Devices}
+Integrating Artificial Intelligence (AI) into implantable medical devices represents a transformative frontier in healthcare technology. AI brings advanced computational capabilities to these devices, enabling real-time data analysis, adaptive functionalities, and personalized healthcare solutions. The intersection of AI and implantable devices marks a change in thinking in patient monitoring, diagnostics, and treatment.
+
+\subsubsection{BIOTRONIK's AI-Powered Cardiac Monitor Implants}
+BIOTRONIK has been at the forefront of AI-driven innovations in implantable cardiac monitors. Their AI-powered devices offer efficient and accurate monitoring for cardiac arrhythmias, as demonstrated by the first implant of a new cardiac monitor equipped with artificial intelligence. This section provides a brief recapitulation of BIOTRONIK's contributions, emphasizing the significance of their AI-powered cardiac monitor implants in advancing patient care.
+
+\subsubsection{Competing and Complementing Innovations}
+While BIOTRONIK's advancements are noteworthy, the landscape of AI-integrated implantable medical devices extends beyond a single manufacturer. This section explores innovations from various manufacturers and researchers, offering a diverse perspective on the integration of AI into implantable devices.
+
+Chou et al. (2023) present an aging drift calibration and device-generality network, highlighting innovations in electronic nose technology for healthcare applications. This highlights the relevance of AI in improving the accuracy and reliability of implantable devices. Ethical and legal aspects, particularly concerning patient data and AI decision-making, are critical considerations for manufacturers.
+
+\subsubsection{Medtronic's AI-Integrated Cardiac Devices Micra AV2 and Micra VR2}
+Medtronic, a prominent player in medical technology, introduces AI integration in their cardiac devices, particularly the Micra AV2 and Micra VR2 leadless pacing systems. These innovative devices have received FDA approval, marking a significant milestone in the evolution of AI-enhanced cardiac technologies.
+
+\paragraph{Description of Medtronic's AI-Integrated Implantable Devices}
+Micra AV2 Pacing Systems: Designed with advanced AI algorithms, the Micra AV2 leadless pacing system focuses on bradycardia patients. The device incorporates arteriovenous (AV) synchrony to provide a median longevity of 16 years, meaning 80\% of patients only need one Micra AV2 device for life. Its compact design and leadless technology contribute to ease of implantation and patient comfort.
+
+Micra VR2 Pacing Systems: Another addition to Medtronic's AI-integrated portfolio, the Micra VR2 leadless pacing system offers an unmatched leadless pacing experience. The delivery is percutaneously via a minimally invasive approach and does not require leads, enhancing treatment for patients with bradycardia. The device highlights Medtronic's commitment to leveraging AI for optimizing patient outcomes.
+
+\subsubsection{Final Thoughts}
+In this evolving landscape, the fusion of AI and implantable devices holds immense promise for revolutionizing healthcare. As the biotech industry continues to innovate, collaborate, and address challenges, the future envisions a healthcare ecosystem where AI seamlessly integrates with implantable devices, ushering in an era of personalized, efficient, and patient-centric medical care.
+
+\section{Acknowledgments}
+The author extends sincere appreciation to the researchers whose referenced work significantly enriched this article. Gratitude is also expressed to the International Journal of Computer Science and Information Technology (IJCSIT) and MedHealth Outlook Magazine for providing platforms to publish and inspire this research. Special thanks to the reviewers for their constructive feedback, which improved this work. I acknowledge the scientific community and colleagues for their support and valuable discussions. Finally, thanks to the AI and machine learning tools for their assistance in refining this text.
+
+\section{Conflicts of Interest}
+The author declares no conflict of interest.
+
+\mathchardef\mystar=\mathcode`\*
+\section{Data availability statement}
+The author of this paper used no data, other than publicly available citations.
+
+\end{multicols}
+\end{document}
